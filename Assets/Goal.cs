@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    public GameObject ClearText;
+    public GameObject NextLevel;
+    public AudioSource audioSource;
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("ÉSÅ[Éã!");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+        ClearText.SetActive(true);
+        NextLevel.SetActive(true);
+        audioSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

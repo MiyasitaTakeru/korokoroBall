@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
-{
+{ 
+    public GameManager gameManager;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            gameManager.AddcoinCount();
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+     GameObject managerObject = GameObject.Find("GameManager");
+        gameManager = managerObject.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -15,12 +25,5 @@ public class Coin : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-    }
+   
 }
